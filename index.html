@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark and light theme</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="color-scheme" content="dark light">
+</head>
+<body class="">
+    <div class="global">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <div class="onoff">
+            <input type="checkbox" class="toggle" id="onoff1">
+            <label for="onoff1"></label>
+        </div>
+        <h1>Tema do texto</h1>
+        <p>Esse texto varia de acordo com o tema</p>
+    </div>
+    <p id="estado">desligado</p>
+    <script>
+        var estado = document.getElementById('estado');
+        $('#onoff1').on('change', function() {
+            var el = this;
+            var theme = document.querySelector('body')
+            estado.innerHTML = el.checked ? 'ligado' : 'desligado';
+            if(estado.textContent == 'ligado'){
+                localStorage.setItem('theme', 'dark-theme')
+                theme.classList.toggle('dark-theme')
+            }else{
+                localStorage.setItem('theme', 'light-theme')
+                theme.classList.remove('dark-theme')
+            }
+            
+        });
+    </script>
+</body>
+</html>
